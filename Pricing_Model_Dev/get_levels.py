@@ -9,3 +9,4 @@ print(df.DrivAge.unique())
 print(df.BonusMalus.unique())
 print(df.VehGas.unique())
 print(df.Area.unique())
+
