@@ -1,6 +1,5 @@
 from enum import Enum
 from pathlib import Path
-from typing import List
 import joblib
 import pandas as pd
 import uvicorn
@@ -53,5 +52,4 @@ async def root(power: int,
     return single_profile
 
 
-if __name__ == '__main__':
-    uvicorn.run(app, host='127.0.0.1', port=8080)
+
