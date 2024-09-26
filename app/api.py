@@ -2,7 +2,6 @@ from enum import Enum
 from pathlib import Path
 import joblib
 import pandas as pd
-import uvicorn
 from fastapi import FastAPI
 
 
