@@ -1,12 +1,13 @@
-
 # Insurance Premium Calculation API
 
-This project is a FastAPI backend service that calculates insurance premiums based on user inputs. The API accepts various parameters related to the insured individual or object and returns a calculated insurance premium.
+This project is a FastAPI backend service that calculates insurance premiums based on user inputs. The API accepts
+various parameters related to the insured individual or object and returns a calculated insurance premium.
 
 ## Features
 
 - **FastAPI**: A modern, fast (high-performance) web framework for building APIs with Python 3.7+.
-- **Insurance Premium Calculation**: The core functionality of the API is to calculate insurance premiums based on inputs provided by the user.
+- **Insurance Premium Calculation**: The core functionality of the API is to calculate insurance premiums based on
+  inputs provided by the user.
 - **JSON Response**: The API returns the calculated premium in a structured JSON format.
 - **Validation**: Input validation is handled automatically by FastAPI.
 
@@ -39,13 +40,21 @@ This project is a FastAPI backend service that calculates insurance premiums bas
    pip install -r requirements.txt
    ```
 
-4. **Run the FastAPI server:**
+4. **navigate to app folder**
 
    ```bash
-   uvicorn app.main:app --reload
+   cd app
+   ```
+   
+5. **Run the FastAPI server:**
+
+   ```bash
+   uvicorn api:app --host 127.0.0.1 --port 8080
    ```
 
-   The API will be available at `http://127.0.0.1:8000`.
+   The API will be available at `http://127.0.0.1:8080`.
+
+    The API interactive documentation will be available at `http://127.0.0.1:8080/docs`
 
 ## API Endpoints
 
@@ -57,12 +66,12 @@ Calculates the insurance premium based on the provided input data.
 
   ```json
   {
-    "age": 30,
-    "gender": "male",
-    "smoker": true,
-    "health_conditions": ["diabetes"],
-    "coverage_amount": 100000,
-    "term": 20
+    "power": 20,
+    "VehAge": 10,
+    "DrivAge": 30,
+    "BonusMalus": 10,
+    "VehGas": "Regular",
+    "Area": "D"
   }
   ```
 
@@ -70,27 +79,47 @@ Calculates the insurance premium based on the provided input data.
 
   ```json
   {
-    "premium": 150.00,
-    "currency": "USD"
+    "VehPower": [
+        20
+    ],
+    "VehAge": [
+        10
+    ],
+    "DrivAge": [
+        30
+    ],
+    "BonusMalus": [
+        10
+    ],
+    "VehGas": [
+        "Regular"
+    ],
+    "Area": [
+        "D"
+    ],
+    "Predicted Frequency": [
+        0.0269
+    ],
+    "Predicted Severity": [
+        624.51
+    ],
+    "Risk Premium": [
+        16.8
+    ]
   }
   ```
 
 ### Example Usage
 
-You can test the API using tools like [Postman](https://www.postman.com/) or [cURL](https://curl.se/).
+You can test the API using tools like [Postman](https://www.postman.com/) or Powershell - RestMethod.
 
-**Using cURL:**
+**Using Powershell - RestMethod:**
 
-```bash
-curl -X POST "http://127.0.0.1:8000/calculate-premium" -H "Content-Type: application/json" -d '{
-    "age": 30,
-    "gender": "male",
-    "smoker": true,
-    "health_conditions": ["diabetes"],
-    "coverage_amount": 100000,
-    "term": 20
-}'
+```shell
+$response = Invoke-RestMethod 'http://127.0.0.1:8080?power=20&VehAge=10&DrivAge=30&BonusMalus=10&VehGas=Regular&Area=D' -Method 'GET' -Headers $headers
+$response | ConvertTo-Json
 ```
+
 
 ## Development
 

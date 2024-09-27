@@ -22,6 +22,7 @@ class Gas(str, Enum):
 app = FastAPI()
 
 
+
 @app.get("/")
 async def root(power: int,
                VehAge: int,
