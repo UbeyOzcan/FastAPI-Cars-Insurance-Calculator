@@ -8,3 +8,5 @@ statsmodels==0.14.2
 numpy~=2.1.0
 joblib
 vercel_blob
+plotly
+kaleido

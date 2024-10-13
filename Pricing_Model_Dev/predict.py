@@ -16,7 +16,6 @@ single_profile = {'VehPower': [10],
 
 single_profile = pd.DataFrame.from_dict(single_profile)
 root = Path(__file__).parent.parent
-print(root)
 single_profile['expected_freq'] = frequency.predict(single_profile)
 single_profile['expected_sev'] = severity.predict(single_profile)
 

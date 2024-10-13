@@ -24,8 +24,8 @@ for i in range(len(claim_count_distribution.index)):
     else:
         claim_count_distribution.loc[i, 'lhs'] = (i * claim_count_distribution.loc[i, 'Empirical Probability']) / \
                                                  claim_count_distribution.loc[i - 1, 'Empirical Probability']
-print(claim_count_distribution)
 
+print(claim_count_distribution)
 # ============================== #
 # Summary Frequency and Severity #
 # ============================== #
@@ -47,3 +47,4 @@ summary = pd.DataFrame({'Exposure': [Exposure],
                         'Severity': [severity],
                         'Risk Premium': [round(frequency * severity, 2)]})
 
+print(summary)
