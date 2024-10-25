@@ -1,0 +1,24 @@
+{
+  "Frequency": {
+    "VehPower": "6",
+    "VehAge": "1",
+    "DrivAge": "51",
+    "BonusMalus": "50",
+    "VehBrand": "B1",
+    "VehGas": "Regular",
+    "Area": "C",
+    "Density": "27000",
+    "Region": "Centre"
+  },
+  "Severity": {
+    "VehPower": "6",
+    "VehAge": "1",
+    "DrivAge": "51",
+    "BonusMalus": "50",
+    "VehBrand": "B1",
+    "VehGas": "Diesel",
+    "Area": "C",
+    "Density": "27000",
+    "Region": "Centre"
+  }
+}
