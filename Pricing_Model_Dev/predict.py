@@ -9,10 +9,10 @@ severity = joblib.load('Severity.joblib')
 
 single_profile = {'VehPower': [10],
                   'VehAge': [0],
-                  'DrivAge': [30],
+                  'DrivAge': [18],
                   'BonusMalus': [50],
                   'VehGas': ['Regular'],
-                  'Area': ['F']}
+                  'Area': ['C']}
 
 single_profile = pd.DataFrame.from_dict(single_profile)
 root = Path(__file__).parent.parent

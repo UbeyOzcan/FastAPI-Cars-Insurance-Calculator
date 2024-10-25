@@ -1,17 +1,19 @@
 from Datasets import get_data
 import pandas as pd
+import json
 
-pd.set_option('display.max_columns', 500)
 df = get_data()
-# rfs = ['VehPower', 'VehAge', 'DrivAge', 'BonusMalus', 'VehBrand', 'VehGas', 'Area', 'Density', 'Region']
-rfs = ['VehGas', 'Area']
+rfs = ['VehPower', 'VehAge', 'DrivAge', 'BonusMalus', 'VehBrand', 'VehGas', 'Area', 'Density', 'Region']
+# rfs = ['VehGas', 'Area']
 base_level = {'Frequency': {},
               'Severity': {}}
 for i in rfs:
     uni = df.groupby(i).agg({'ClaimNb': 'sum', 'Exposure': 'sum'})
     base_freq = uni['Exposure'].idxmax()
     base_sev = uni['ClaimNb'].idxmax()
-    base_level['Frequency'][i] = base_freq
-    base_level['Severity'][i] = base_sev
+    print(f'Base Freq {base_freq} and Base Sev {base_sev}')
+    base_level['Frequency'][i] = f'{base_freq}'
+    base_level['Severity'][i] = f'{base_sev}'
 
-print(base_level)
+with open('base_level.json', 'w') as fp:
+    json.dump(base_level, fp)
