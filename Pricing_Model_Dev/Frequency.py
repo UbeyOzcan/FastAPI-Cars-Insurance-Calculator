@@ -5,6 +5,7 @@ import statsmodels.api as sm
 import statsmodels.formula.api as smf
 import pandas as pd
 import re
+import joblib
 
 df = get_data()
 
@@ -21,7 +22,7 @@ FreqPoisson = smf.glm(formula=expr,
                       data=train,
                       offset=np.log(train['Exposure']),
                       family=sm.families.Poisson(link=sm.families.links.log())).fit()
-
+joblib.dump(FreqPoisson, 'Severity.joblib')
 coef = FreqPoisson.params
 coef = pd.DataFrame({'Coef': coef})
 coef['Exp_coef'] = np.exp(coef['Coef'])
@@ -39,4 +40,3 @@ for i in coef.index.values:
         i = re.search("(?<=\[T\.)\w+(?=\])", i)
         names.append(i.group())
 coef.index = names
-print(coef)
