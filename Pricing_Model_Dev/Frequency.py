@@ -22,21 +22,5 @@ FreqPoisson = smf.glm(formula=expr,
                       data=train,
                       offset=np.log(train['Exposure']),
                       family=sm.families.Poisson(link=sm.families.links.log())).fit()
-joblib.dump(FreqPoisson, 'Severity.joblib')
-coef = FreqPoisson.params
-coef = pd.DataFrame({'Coef': coef})
-coef['Exp_coef'] = np.exp(coef['Coef'])
-coef['pred'] = None
-for i in coef.index:
-    if i == 'Intercept':
-        coef.loc[i, 'pred'] = coef.loc[i, 'Exp_coef']
-    else:
-        coef.loc[i, 'pred'] = coef.loc['Intercept', 'Exp_coef'] * coef.loc[i, 'Exp_coef']
-names = []
-for i in coef.index.values:
-    if i == 'Intercept':
-        names.append(i)
-    else:
-        i = re.search("(?<=\[T\.)\w+(?=\])", i)
-        names.append(i.group())
-coef.index = names
+joblib.dump(FreqPoisson, 'Frequency.joblib')
+
